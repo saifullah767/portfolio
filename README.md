@@ -2,7 +2,12 @@
 
 [Portfolio](https://saifullah767.github.io/portfolio/)
 
-## Run locally with npm
+## React migration (Vite + React JS)
+
+The project now uses a simple Vite + React setup while preserving the existing
+portfolio layout and behavior from `index.html` using the same `assets/` files.
+
+## Manual commands (run by you)
 
 1. Install dependencies:
 
@@ -16,40 +21,16 @@ npm install
 npm run dev
 ```
 
-Vite serves `index.html` from project root and uses your existing `assets/` folder.
-
-## Optional production build (Vite)
+3. Build and preview:
 
 ```bash
 npm run build
 npm run preview
 ```
 
-## Cloudflare Pages Deploy (index.html only)
+## Notes
 
-This project is configured to deploy only `index.html` as the live entry page, plus `assets/`.
-
-### Build command
-
-```bash
-bash scripts/cloudflare-build.sh
-```
-
-### Deploy command (manual CLI)
-
-```bash
-npm run deploy:pages
-```
-
-### Build output directory
-
-```text
-public
-```
-
-### What gets deployed
-
-- `public/index.html`
-- `public/assets/**`
-
-No other root HTML files are included in the deploy output.
+- Main app entry: `src/main.jsx`
+- Page shell and legacy script loader: `src/App.jsx`
+- Legacy page markup source: `src/legacy/portfolio-body.html`
+- Existing static files remain under `assets/`
