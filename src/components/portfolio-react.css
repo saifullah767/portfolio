@@ -216,10 +216,10 @@
 /* Legacy theme styles expect feather SVGs in About; React uses icon-font <i>. */
 .slide.slider-style-3 .slider-wrapper .slider-info .user-info-top .user-info-header .user i[class^='feather-'] {
   width: 22px;
-  position: relative;
+  position: absolute;
   color: #ffffff;
-  top: 37%;
-  left: 50%;
+  top: 49%;
+  left: 54%;
   transform: translate(-50%, -50%);
   display: block;
   line-height: 1;

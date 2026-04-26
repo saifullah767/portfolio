@@ -15,9 +15,9 @@ export default function About({ about, socialLinks }) {
                         <div className="user">
                           <i className="feather-user" aria-hidden="true" />
                         </div>
-                        <h2 className="title">
+                        <h1 className="title">
                           {about.greeting} <span>{about.name}</span>
-                        </h2>
+                        </h1>
                         <p className="disc">{about.title}</p>
                       </div>
 

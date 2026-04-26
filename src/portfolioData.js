@@ -27,8 +27,9 @@ export const portfolioData = {
   about: {
     name: 'Saifullah',
     greeting: "Hi, I'm",
-    title: 'Web designer and developer working to serve people.',
-    role: 'Web designer & developer',
+    title:
+      'Remote full-stack web developer building React, Vue, Tailwind, Laravel, and AI-powered web applications.',
+    role: 'Full-Stack Web Developer | React, Vue, Tailwind, Laravel, AI Integrations',
     email: 'saifullah.jamali03@gmail.com',
     avatar: '/assets/images/portfolio-my-image.png',
     logo: '/assets/images/logo-for-portfolio.png',
@@ -38,7 +39,7 @@ export const portfolioData = {
     inlineSocialTitle: 'You can also find me at:'
   },
   details: {
-    subtitle: '3+ Years of Experience',
+    subtitle: '4+ Years of Experience',
     tabs: [
       { id: 'education', label: 'education' },
       { id: 'professional', label: 'professional Skills' },
