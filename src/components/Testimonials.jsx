@@ -1,7 +1,12 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 
 export default function Testimonials({ testimonials }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const touchStartX = useRef(null);
+
+  if (!testimonials?.length) {
+    return null;
+  }
 
   const next = () => {
     setActiveIndex((prev) => (prev + 1) % testimonials.length);
@@ -12,6 +17,32 @@ export default function Testimonials({ testimonials }) {
   };
 
   const active = testimonials[activeIndex];
+
+  const handleTouchStart = (event) => {
+    touchStartX.current = event.touches[0]?.clientX ?? null;
+  };
+
+  const handleTouchEnd = (event) => {
+    if (touchStartX.current === null) {
+      return;
+    }
+
+    const touchEndX = event.changedTouches[0]?.clientX ?? touchStartX.current;
+    const deltaX = touchStartX.current - touchEndX;
+
+    touchStartX.current = null;
+
+    if (Math.abs(deltaX) < 40) {
+      return;
+    }
+
+    if (deltaX > 0) {
+      next();
+      return;
+    }
+
+    prev();
+  };
 
   return (
     <div className="rn-testimonial-area rn-section-gap section-separator" id="testimonial">
@@ -26,7 +57,11 @@ export default function Testimonials({ testimonials }) {
 
         <div className="row">
           <div className="col-lg-12">
-            <div className="testimonial-activation testimonial-pb mb--30">
+            <div
+              className="testimonial-activation testimonial-pb mb--30"
+              onTouchStart={handleTouchStart}
+              onTouchEnd={handleTouchEnd}
+            >
               <div className="testimonial mt--50 mt_md--40 mt_sm--40">
                 <div className="inner">
                   <div className="card-info">

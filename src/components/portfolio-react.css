@@ -172,6 +172,22 @@
   margin-bottom: 0;
 }
 
+.testimonial-activation .testimonial-react-controls {
+  position: static;
+  display: flex;
+}
+
+.testimonial-activation .testimonial-react-controls .slide-arrow {
+  position: static;
+  top: auto;
+  right: auto;
+  bottom: auto;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
 .portfolio-react-dots {
   list-style: none;
   display: flex;
@@ -194,6 +210,13 @@
 .portfolio-react-dots li button.active {
   opacity: 1;
   background: var(--color-primary);;
+}
+
+@media only screen and (max-width: 767px) {
+  .testimonial-activation .testimonial-react-controls .slide-arrow {
+    width: 48px;
+    height: 48px;
+  }
 }
 
 .backto-top {
