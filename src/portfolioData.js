@@ -122,7 +122,7 @@ export const portfolioData = {
     {
       category: 'Old Todo List -> New Kanban Board',
       title: 'KANBAN BOARD WORKFLOW UPGRADE',
-      image: '/assets/images/my-projects/project-todolist.png',
+      image: '/assets/images/my-projects/kanban.png',
       url: 'https://kanban.iamsaifullah.com/'
     },
     {
