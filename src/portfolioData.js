@@ -7,7 +7,7 @@ export const portfolioData = {
   socialLinks: [
     {
       name: 'LinkedIn',
-      href: 'https://www.linkedin.com/in/saifullah-software-developer/',
+      href: 'https://www.linkedin.com/in/iamsaifullah/',
       iconType: 'feather',
       icon: 'linkedin'
     },
