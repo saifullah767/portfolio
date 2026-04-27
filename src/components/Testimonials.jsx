@@ -87,14 +87,14 @@ export default function Testimonials({ testimonials }) {
                 </div>
               </div>
 
-              <div className="portfolio-react-carousel-controls testimonial-react-controls">
+              {/* <div className="portfolio-react-carousel-controls testimonial-react-controls">
                 <button type="button" className="slide-arrow prev-arrow" onClick={prev} aria-label="Previous testimonial">
                   <i className="feather-arrow-left" aria-hidden="true" />
                 </button>
                 <button type="button" className="slide-arrow next-arrow" onClick={next} aria-label="Next testimonial">
                   <i className="feather-arrow-right" aria-hidden="true" />
                 </button>
-              </div>
+              </div> */}
 
               <ul className="portfolio-react-dots" aria-label="Testimonial pagination">
                 {testimonials.map((item, index) => (
