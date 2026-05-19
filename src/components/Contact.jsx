@@ -18,7 +18,7 @@ export default function Contact({ contact }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const accessKey = env.VITE_WEB3FORMS_ACCESS_KEY;
+    const accessKey = "a5cf57a7-5cf7-4b5b-9e45-098f734b76fb";
 
     if (!accessKey) {
       setStatus({
