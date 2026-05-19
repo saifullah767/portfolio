@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ThankYouPage from './ThankYouPage';
 
 export default function Contact({ contact }) {
   const [formData, setFormData] = useState({
@@ -10,6 +11,7 @@ export default function Contact({ contact }) {
   });
   const [status, setStatus] = useState({ type: '', message: '' });
   const [isSending, setIsSending] = useState(false);
+  const [showThankYouPage, setShowThankYouPage] = useState(false);
 
   const handleChange = (event) => {
     const { name, value } = event.target;
@@ -53,12 +55,17 @@ export default function Contact({ contact }) {
 
       setStatus({ type: 'success', message: 'Message sent successfully. I will get back to you soon.' });
       setFormData({ name: '', email: '', subject: '', message: '', botcheck: '' });
+      setShowThankYouPage(true);
     } catch (error) {
       setStatus({ type: 'error', message: 'Sending failed. Please try again in a moment.' });
     } finally {
       setIsSending(false);
     }
   };
+
+  if (showThankYouPage) {
+    return <ThankYouPage onBack={() => setShowThankYouPage(false)} />;
+  }
 
   return (
     <div id="contact" className="rn-contact-area rn-section-gap section-separator">

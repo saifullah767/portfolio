@@ -258,6 +258,48 @@
   line-height: 1;
 }
 
+.portfolio-thankyou-page {
+  min-height: 62vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.portfolio-thankyou-page__content {
+  width: min(100%, 740px);
+  text-align: center;
+  background: #1a1d22;
+  border-radius: 18px;
+  padding: 48px 28px;
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.35);
+}
+
+.portfolio-thankyou-page__eyebrow {
+  margin: 0 0 8px;
+  color: var(--color-primary);
+  font-size: 14px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.portfolio-thankyou-page__title {
+  margin: 0 0 10px;
+  color: #ffffff;
+  font-size: clamp(1.9rem, 3vw, 2.4rem);
+  line-height: 1.2;
+}
+
+.portfolio-thankyou-page__text {
+  margin: 0 0 22px;
+  color: #c4cfde;
+  line-height: 1.7;
+}
+
+.portfolio-thankyou-page__actions {
+  display: flex;
+  justify-content: center;
+}
+
 /* Keep hamburger icon aligned on small screens with React button wrapper. */
 @media only screen and (max-width: 1199px) {
   .header-wrapper .header-right {
