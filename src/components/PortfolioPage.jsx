@@ -4,6 +4,7 @@ import MyDetails from './MyDetails';
 import Projects from './Projects';
 import Testimonials from './Testimonials';
 import Certifications from './Certifications';
+import Contact from './Contact';
 import Footer from './Footer';
 
 export default function PortfolioPage({ data }) {
@@ -15,6 +16,7 @@ export default function PortfolioPage({ data }) {
         <Projects projects={data.projects} />
         <Testimonials testimonials={data.testimonials} />
         <Certifications certifications={data.certifications} />
+        <Contact contact={data.contact} />
       </Layout>
 
       <Footer footer={data.footer} socialLinks={data.socialLinks} />

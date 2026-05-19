@@ -2,7 +2,8 @@ export const portfolioData = {
   navItems: [
     { label: 'Home', href: '#home' },
     { label: 'My Details', href: '#resume' },
-    { label: 'Projects', href: '#portfolio' }
+    { label: 'Projects', href: '#portfolio' },
+    { label: 'Contact', href: '#contact' }
   ],
   socialLinks: [
     {
@@ -30,12 +31,12 @@ export const portfolioData = {
     title:
       'Remote full-stack web developer building React, Vue, Tailwind, Laravel, and AI-powered web applications.',
     role: 'Full-Stack Web Developer | React, Vue, Tailwind, Laravel, AI Integrations',
-    email: 'saifullah.jamali03@gmail.com',
+    email: 'hello@iamsaifullah.com',
     avatar: '/assets/images/portfolio-my-image.png',
     logo: '/assets/images/logo-for-portfolio.png',
     cvUrl: '/assets/Saifullah-resume.pdf',
     cvDownloadName: 'saifullah.pdf',
-    contactEmail: 'saif.jamali03@gmail.com',
+    contactEmail: 'hello@iamsaifullah.com',
     inlineSocialTitle: 'You can also find me at:'
   },
   details: {
@@ -237,6 +238,11 @@ export const portfolioData = {
       credentialUrl: 'https://www.credential.net/be449ad2-7616-4564-84f4-906934bdaaa7'
     }
   ],
+  contact: {
+    subtitle: 'Get In Touch',
+    title: 'Contact With Me',
+    email: 'hello@iamsaifullah.com'
+  },
   footer: {
     logo: '/assets/images/logo-for-portfolio.png',
     groups: [
