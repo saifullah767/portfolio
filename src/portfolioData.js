@@ -121,6 +121,12 @@ export const portfolioData = {
   },
   projects: [
     {
+      category: 'Personal Tool',
+      title: 'SITESNAP LIVE WEBSITE MOCKUP GENERATOR',
+      image: '/assets/images/my-projects/site-snap-1.png',
+      url: 'https://sitesnap.iamsaifullah.com/'
+    },
+    {
       category: 'Old Todo List -> New Kanban Board',
       title: 'KANBAN BOARD WORKFLOW UPGRADE',
       image: '/assets/images/my-projects/kanban.png',
