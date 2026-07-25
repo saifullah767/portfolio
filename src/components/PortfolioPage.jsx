@@ -1,6 +1,7 @@
 import Layout from './Layout';
 import About from './About';
 import MyDetails from './MyDetails';
+import ClientWork from './ClientWork';
 import Projects from './Projects';
 import Testimonials from './Testimonials';
 import Certifications from './Certifications';
@@ -12,8 +13,9 @@ export default function PortfolioPage({ data }) {
     <>
       <Layout logo={data.about.logo} navItems={data.navItems} socialLinks={data.socialLinks}>
         <About about={data.about} socialLinks={data.socialLinks} />
+        <ClientWork clientWork={data.clientWork} />
+        <Projects projects={data.projects} description={data.projectsDescription} />
         <MyDetails details={data.details} />
-        <Projects projects={data.projects} />
         <Testimonials testimonials={data.testimonials} />
         <Certifications certifications={data.certifications} />
         <Contact contact={data.contact} />

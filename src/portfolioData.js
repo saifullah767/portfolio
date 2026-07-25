@@ -1,8 +1,9 @@
 export const portfolioData = {
   navItems: [
     { label: 'Home', href: '#home' },
-    { label: 'My Details', href: '#resume' },
+    { label: 'Client Work', href: '#client-work' },
     { label: 'Projects', href: '#portfolio' },
+    { label: 'My Details', href: '#resume' },
     { label: 'Contact', href: '#contact' }
   ],
   socialLinks: [
@@ -119,6 +120,59 @@ export const portfolioData = {
       ]
     ]
   },
+  clientWork: {
+    subtitle: 'Featured Work',
+    title: "Products I've Worked On",
+    description:
+      "A selection of production apps I've contributed to across marketing, video, lead generation, and digital commerce.",
+    items: [
+      {
+        name: 'Grawt',
+        label: 'Product contribution',
+        logo: '/assets/images/client-work/grawt.png',
+        logoStyle: 'wordmark',
+        url: 'https://www.grawt.com/'
+      },
+      {
+        name: 'Redeemlo',
+        label: 'Product contribution',
+        logo: '/assets/images/client-work/redeemlo.webp',
+        logoStyle: 'wide',
+        url: 'https://www.redeemlo.com/'
+      },
+      {
+        name: 'Unfold.video',
+        label: 'Product contribution',
+        logo: '/assets/images/client-work/unfold-video.webp',
+        logoStyle: 'wide',
+        url: 'https://www.unfold.video/'
+      },
+      {
+        name: 'KuickList',
+        label: 'Product contribution',
+        logo: '/assets/images/client-work/kuicklist.png',
+        logoStyle: 'icon',
+        iconPlate: true,
+        url: 'https://www.kuicklist.com/'
+      },
+      {
+        name: 'ProductDyno',
+        label: 'Product contribution',
+        logo: '/assets/images/client-work/productdyno.png',
+        logoStyle: 'icon',
+        url: 'https://productdyno.com/'
+      },
+      {
+        name: 'ListWeaver',
+        label: 'Product contribution',
+        logo: '/assets/images/client-work/listweaver.webp',
+        logoStyle: 'wide',
+        url: 'https://listweaver.app/'
+      }
+    ]
+  },
+  projectsDescription:
+    "A selection of personal products, practical experiments, and web experiences I've built.",
   projects: [
     {
       category: 'Personal Tool',
@@ -133,10 +187,10 @@ export const portfolioData = {
       url: 'https://kanban.iamsaifullah.com/'
     },
     {
-      category: 'Currently working on - (Personal)',
-      title: 'E-COMMERCE STORE BUILDER',
+      category: 'AI E-commerce Store Builder',
+      title: 'KUICKSTORE',
       image: '/assets/images/my-projects/product-cart.png',
-      url: 'https://product-cart.store'
+      url: 'https://kuickstore.com'
     },
     {
       category: 'CAPSTONE PROJECT',
