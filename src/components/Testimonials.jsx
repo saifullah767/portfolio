@@ -1,6 +1,9 @@
 import { useRef, useState } from 'react';
+import { interpolate } from '../translations';
 
-export default function Testimonials({ testimonials }) {
+const testimonialKeys = ['juan', 'arturo', 'alexander', 'alejandro'];
+
+export default function Testimonials({ testimonials, copy }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const touchStartX = useRef(null);
 
@@ -17,6 +20,7 @@ export default function Testimonials({ testimonials }) {
   };
 
   const active = testimonials[activeIndex];
+  const activeKey = testimonialKeys[activeIndex];
 
   const handleTouchStart = (event) => {
     touchStartX.current = event.touches[0]?.clientX ?? null;
@@ -50,7 +54,7 @@ export default function Testimonials({ testimonials }) {
         <div className="row">
           <div className="col-lg-12">
             <div className="section-title text-center">
-              <h2 className="title">Testimonial</h2>
+              <h2 className="title">{copy.title}</h2>
             </div>
           </div>
         </div>
@@ -66,44 +70,38 @@ export default function Testimonials({ testimonials }) {
                 <div className="inner">
                   <div className="card-info">
                     <div className="card-thumbnail">
-                      <img src={active.image} alt={`${active.name} testimonial`} />
+                      <img
+                        src={active.image}
+                        alt={interpolate(copy.imageAlt, { name: active.name })}
+                      />
                     </div>
                     <div className="card-content">
                       <h3 className="title">{active.name}</h3>
-                      <span className="designation">{active.role}</span>
+                      <span className="designation">{copy.roles[activeKey] ?? active.role}</span>
                     </div>
                   </div>
 
                   <div className="card-description">
                     <div className="title-area">
                       <div className="title-info">
-                        <h3 className="title">{active.title}</h3>
-                        <span className="date">{active.source}</span>
+                        <h3 className="title">{copy.pairProgramming}</h3>
+                        <span className="date">{copy.source}</span>
                       </div>
                     </div>
                     <div className="seperator" />
-                    <p className="discription">{active.text}</p>
+                    <p className="discription">{copy.quotes[activeKey] ?? active.text}</p>
                   </div>
                 </div>
               </div>
 
-              {/* <div className="portfolio-react-carousel-controls testimonial-react-controls">
-                <button type="button" className="slide-arrow prev-arrow" onClick={prev} aria-label="Previous testimonial">
-                  <i className="feather-arrow-left" aria-hidden="true" />
-                </button>
-                <button type="button" className="slide-arrow next-arrow" onClick={next} aria-label="Next testimonial">
-                  <i className="feather-arrow-right" aria-hidden="true" />
-                </button>
-              </div> */}
-
-              <ul className="portfolio-react-dots" aria-label="Testimonial pagination">
+              <ul className="portfolio-react-dots" aria-label={copy.pagination}>
                 {testimonials.map((item, index) => (
                   <li key={item.name}>
                     <button
                       type="button"
                       className={index === activeIndex ? 'active' : ''}
                       onClick={() => setActiveIndex(index)}
-                      aria-label={`Go to testimonial ${index + 1}`}
+                      aria-label={interpolate(copy.goTo, { number: index + 1 })}
                     />
                   </li>
                 ))}

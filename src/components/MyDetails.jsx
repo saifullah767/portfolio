@@ -22,11 +22,11 @@ function ResumeList({ items }) {
   );
 }
 
-function SkillCharts({ title, skills }) {
+function SkillCharts({ title, skills, subtitle }) {
   return (
     <div className="progress-wrapper">
       <div className="content">
-        <span className="subtitle">Features</span>
+        <span className="subtitle">{subtitle}</span>
         <h4 className="maintitle">{title}</h4>
 
         {skills.map((skill) => (
@@ -49,8 +49,72 @@ function SkillCharts({ title, skills }) {
   );
 }
 
-export default function MyDetails({ details }) {
+const skillCopyKeys = {
+  PORTFOLIO: 'portfolio',
+  'LANDING PAGE': 'landingPage',
+  DATABASE: 'database',
+  'API DEVELOPMENT': 'apiDevelopment'
+};
+
+export default function MyDetails({ details, copy }) {
   const [activeTab, setActiveTab] = useState('professional');
+
+  const educationColumns = [
+    [
+      {
+        ...details.educationColumns[0][0],
+        subtitle: copy.education.microverseSubtitle,
+        description: copy.education.microverseDescription
+      },
+      {
+        ...details.educationColumns[0][1],
+        title: copy.education.intermediateTitle,
+        subtitle: copy.education.intermediateSubtitle,
+        description: copy.education.intermediateDescription
+      }
+    ],
+    [
+      {
+        ...details.educationColumns[1][0],
+        subtitle: copy.education.aptechSubtitle,
+        description: copy.education.aptechDescription
+      },
+      {
+        ...details.educationColumns[1][1],
+        title: copy.education.bachelorsTitle,
+        subtitle: copy.education.bachelorsSubtitle,
+        description: copy.education.bachelorsDescription
+      }
+    ]
+  ];
+
+  const experienceColumns = [
+    [
+      {
+        ...details.experienceColumns[0][0],
+        subtitle: copy.experience.internTitle,
+        description: copy.experience.internDescription
+      },
+      {
+        ...details.experienceColumns[0][1],
+        subtitle: copy.experience.developerTitle,
+        description: copy.experience.developerDescription
+      }
+    ],
+    [
+      {
+        ...details.experienceColumns[1][0],
+        subtitle: copy.experience.mentorTitle,
+        description: copy.experience.mentorDescription
+      }
+    ]
+  ];
+
+  const localizeSkills = (skills) =>
+    skills.map((skill) => ({
+      ...skill,
+      name: copy.skillNames[skillCopyKeys[skill.name]] ?? skill.name
+    }));
 
   return (
     <div className="rn-resume-area rn-section-gap section-separator" id="resume">
@@ -58,8 +122,8 @@ export default function MyDetails({ details }) {
         <div className="row">
           <div className="col-lg-12">
             <div className="section-title text-center">
-              <span className="subtitle">{details.subtitle}</span>
-              <h2 className="title">My Details</h2>
+              <span className="subtitle">{copy.subtitle}</span>
+              <h2 className="title">{copy.title}</h2>
             </div>
           </div>
         </div>
@@ -76,7 +140,7 @@ export default function MyDetails({ details }) {
                     aria-selected={activeTab === tab.id}
                     onClick={() => setActiveTab(tab.id)}
                   >
-                    {tab.label}
+                    {copy.tabs[tab.id === 'professional' ? 'skills' : tab.id]}
                   </button>
                 </li>
               ))}
@@ -85,9 +149,9 @@ export default function MyDetails({ details }) {
             <div className="rn-nav-content tab-content" id="myTabContents">
               <div className={`tab-pane fade single-tab-area${activeTab === 'education' ? ' show active' : ''}`}>
                 <div className="personal-experience-inner mt--40">
-                  <h4 className="maintitle">Education</h4>
+                  <h4 className="maintitle">{copy.educationTitle}</h4>
                   <div className="row">
-                    {details.educationColumns.map((column, index) => (
+                    {educationColumns.map((column, index) => (
                       <div key={`education-column-${index + 1}`} className="col-lg-6 col-md-12 col-12">
                         <ResumeList items={column} />
                       </div>
@@ -100,11 +164,19 @@ export default function MyDetails({ details }) {
                 <div className="personal-experience-inner mt--40">
                   <div className="row row--40">
                     <div className="col-lg-6 col-md-6 col-12">
-                      <SkillCharts title="Design Skill" skills={details.skills.design} />
+                      <SkillCharts
+                        title={copy.designSkills}
+                        skills={localizeSkills(details.skills.design)}
+                        subtitle={copy.features}
+                      />
                     </div>
 
                     <div className="col-lg-6 col-md-6 col-12 mt_sm--60">
-                      <SkillCharts title="Development Skill" skills={details.skills.development} />
+                      <SkillCharts
+                        title={copy.developmentSkills}
+                        skills={localizeSkills(details.skills.development)}
+                        subtitle={copy.features}
+                      />
                     </div>
                   </div>
                 </div>
@@ -112,9 +184,9 @@ export default function MyDetails({ details }) {
 
               <div className={`tab-pane fade${activeTab === 'experience' ? ' show active' : ''}`}>
                 <div className="personal-experience-inner mt--40">
-                  <h4 className="maintitle">Job Experience</h4>
+                  <h4 className="maintitle">{copy.experienceTitle}</h4>
                   <div className="row">
-                    {details.experienceColumns.map((column, index) => (
+                    {experienceColumns.map((column, index) => (
                       <div key={`experience-column-${index + 1}`} className="col-lg-6 col-md-12 col-12 mt_md--60 mt_sm--60">
                         <ResumeList items={column} />
                       </div>

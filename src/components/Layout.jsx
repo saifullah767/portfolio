@@ -1,7 +1,24 @@
 import { useEffect, useState } from 'react';
 import SocialLinks from './SocialLinks';
 
-export default function Layout({ logo, navItems, socialLinks, children }) {
+const navCopyKeys = {
+  '#home': 'home',
+  '#client-work': 'clientWork',
+  '#portfolio': 'projects',
+  '#resume': 'details',
+  '#contact': 'contact'
+};
+
+export default function Layout({
+  logo,
+  navItems,
+  socialLinks,
+  copy,
+  locale,
+  locales,
+  onLocaleChange,
+  children
+}) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isSticky, setIsSticky] = useState(false);
   const [showBackToTop, setShowBackToTop] = useState(false);
@@ -74,7 +91,7 @@ export default function Layout({ logo, navItems, socialLinks, children }) {
             <div className="header-left">
               <div className="logo">
                 <a href="#home">
-                  <img className="my-portfolio-logo" src={logo} alt="logo-image" />
+                  <img className="my-portfolio-logo" src={logo} alt={copy.layout.logoAlt} />
                 </a>
               </div>
             </div>
@@ -91,7 +108,7 @@ export default function Layout({ logo, navItems, socialLinks, children }) {
                         href={item.href}
                         onClick={(event) => handleSmoothScroll(event, item.href)}
                       >
-                        {item.label}
+                        {copy.nav[navCopyKeys[item.href]] ?? item.label}
                       </a>
                     </li>
                   ))}
@@ -99,11 +116,26 @@ export default function Layout({ logo, navItems, socialLinks, children }) {
               </nav>
 
               <div className="header-right">
+                <label className="portfolio-language-selector">
+                  <span className="portfolio-visually-hidden">{copy.layout.language}</span>
+                  <i className="feather-globe" aria-hidden="true" />
+                  <select
+                    value={locale}
+                    onChange={(event) => onLocaleChange(event.target.value)}
+                    aria-label={copy.layout.language}
+                  >
+                    {locales.map((language) => (
+                      <option key={language.code} value={language.code}>
+                        {language.nativeLabel}
+                      </option>
+                    ))}
+                  </select>
+                </label>
                 <div className="hamberger-menu d-block d-xl-none">
                   <button
                     type="button"
                     className="portfolio-react-icon-button"
-                    aria-label="Open navigation menu"
+                    aria-label={copy.layout.openMenu}
                     onClick={() => setIsMobileMenuOpen(true)}
                   >
                     <i className="feather-menu humberger-menu" aria-hidden="true" />
@@ -127,20 +159,20 @@ export default function Layout({ logo, navItems, socialLinks, children }) {
           <div className="menu-top">
             <div className="menu-header">
               <a className="logo" href="#home" onClick={handleNavClick}>
-                <img className="my-portfolio-logo" src={logo} alt="logo-image" />
+                <img className="my-portfolio-logo" src={logo} alt={copy.layout.logoAlt} />
               </a>
               <div className="close-button">
                 <button
                   type="button"
                   className="close-menu-activation close"
-                  aria-label="Close navigation menu"
+                  aria-label={copy.layout.closeMenu}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   <i className="feather-x" aria-hidden="true" />
                 </button>
               </div>
             </div>
-            <p className="discription">Welcome to my profile.</p>
+            <p className="discription">{copy.layout.mobileWelcome}</p>
           </div>
           <div className="content">
             <ul className="primary-menu nav nav-pills">
@@ -151,14 +183,14 @@ export default function Layout({ logo, navItems, socialLinks, children }) {
                     href={item.href}
                     onClick={(event) => handleSmoothScroll(event, item.href)}
                   >
-                    {item.label}
+                    {copy.nav[navCopyKeys[item.href]] ?? item.label}
                   </a>
                 </li>
               ))}
             </ul>
 
             <div className="social-share-style-1 mt--40">
-              <span className="title">Find me also</span>
+              <span className="title">{copy.layout.findMe}</span>
               <SocialLinks links={socialLinks} />
             </div>
           </div>
@@ -171,7 +203,7 @@ export default function Layout({ logo, navItems, socialLinks, children }) {
         <button
           type="button"
           className="portfolio-react-icon-button"
-          aria-label="Back to top"
+          aria-label={copy.layout.backToTop}
           onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
         >
           <i className="feather-arrow-up" aria-hidden="true" />

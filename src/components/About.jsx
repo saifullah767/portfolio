@@ -1,6 +1,6 @@
 import SocialLinks from './SocialLinks';
 
-export default function About({ about, socialLinks }) {
+export default function About({ about, socialLinks, copy }) {
   return (
     <div id="home" className="rn-slide-area">
       <div className="slide slider-style-3">
@@ -16,15 +16,15 @@ export default function About({ about, socialLinks }) {
                           <i className="feather-user" aria-hidden="true" />
                         </div>
                         <h1 className="title">
-                          {about.greeting} <span>{about.name}</span>
+                          {copy.greeting} <span>{about.name}</span>
                         </h1>
-                        <p className="disc">{about.title}</p>
+                        <p className="disc">{copy.title}</p>
                       </div>
 
                       <div className="user-info-footer">
                         <div className="info">
                           <i className="feather-file" aria-hidden="true" />
-                          <span>{about.role}</span>
+                          <span>{copy.role}</span>
                         </div>
                         <div className="info">
                           <i className="feather-mail" aria-hidden="true" />
@@ -33,7 +33,7 @@ export default function About({ about, socialLinks }) {
 
                         <div id="footer-inline" className="rn-footer-area footer-style-2 section-separator">
                           <div className="container">
-                            <p style={{ marginTop: '60px' }}>{about.inlineSocialTitle}</p>
+                            <p style={{ marginTop: '60px' }}>{copy.socialTitle}</p>
                             <div className="row">
                               <div className="col-xl-3 col-lg-3 col-md-6 col-sm-6 col-12">
                                 <div className="social-icone-wrapper">
@@ -49,13 +49,13 @@ export default function About({ about, socialLinks }) {
 
                   <div className="col-xl-12 col-lg-12 col-12">
                     <div className="user-info-bottom">
-                      <span>Download my curriculum vitae: </span>
+                      <span>{copy.downloadPrompt} </span>
                       <div className="button-wrapper d-flex">
                         <a className="rn-btn mr--30" href={about.cvUrl} download={about.cvDownloadName}>
-                          <span>DOWNLOAD CV</span>
+                          <span>{copy.downloadButton}</span>
                         </a>
                         <a className="rn-btn" href={`mailto:${about.contactEmail}`}>
-                          <span>CONTACT ME</span>
+                          <span>{copy.contactButton}</span>
                         </a>
                       </div>
                     </div>
@@ -67,7 +67,7 @@ export default function About({ about, socialLinks }) {
             <div className="order-1 order-xl-2 col-lg-12 col-xl-7">
               <div className="background-image-area">
                 <div className="thumbnail-image">
-                  <img src={about.avatar} alt="Personal Portfolio" />
+                  <img src={about.avatar} alt={copy.portraitAlt} />
                 </div>
               </div>
             </div>

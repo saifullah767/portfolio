@@ -1,4 +1,6 @@
-export default function ClientWork({ clientWork }) {
+import { interpolate } from '../translations';
+
+export default function ClientWork({ clientWork, copy }) {
   return (
     <section
       id="client-work"
@@ -9,11 +11,11 @@ export default function ClientWork({ clientWork }) {
         <div className="row">
           <div className="col-lg-12">
             <div className="section-title text-center">
-              <span className="subtitle">{clientWork.subtitle}</span>
+              <span className="subtitle">{copy.subtitle}</span>
               <h2 id="client-work-title" className="title">
-                {clientWork.title}
+                {copy.title}
               </h2>
-              <p className="portfolio-client-work__description">{clientWork.description}</p>
+              <p className="portfolio-client-work__description">{copy.description}</p>
             </div>
           </div>
         </div>
@@ -27,7 +29,7 @@ export default function ClientWork({ clientWork }) {
                 href={product.url}
                 target="_blank"
                 rel="noreferrer"
-                aria-label={`Visit ${product.name} website`}
+                aria-label={interpolate(copy.visitWebsite, { name: product.name })}
               >
                 <i
                   className="feather-arrow-up-right portfolio-client-work__external"
@@ -42,18 +44,18 @@ export default function ClientWork({ clientWork }) {
                   <img
                     className={`portfolio-client-work__logo portfolio-client-work__logo--${product.logoStyle}`}
                     src={product.logo}
-                    alt={`${product.name} logo`}
+                    alt={interpolate(copy.logoAlt, { name: product.name })}
                   />
                 </span>
 
                 <strong className="portfolio-client-work__name">{product.name}</strong>
-                <span className="portfolio-client-work__label">{product.label}</span>
+                <span className="portfolio-client-work__label">{copy.contribution}</span>
               </a>
             ))}
           </div>
         </div>
 
-        <p className="portfolio-client-work__hint">Select a product to visit the live app.</p>
+        <p className="portfolio-client-work__hint">{copy.hint}</p>
       </div>
     </section>
   );

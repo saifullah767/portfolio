@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import ThankYouPage from './ThankYouPage';
 
-export default function Contact({ contact }) {
+export default function Contact({ contact, copy, thankYouCopy }) {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -9,7 +9,7 @@ export default function Contact({ contact }) {
     message: '',
     botcheck: ''
   });
-  const [status, setStatus] = useState({ type: '', message: '' });
+  const [status, setStatus] = useState({ type: '', messageKey: '' });
   const [isSending, setIsSending] = useState(false);
   const [showThankYouPage, setShowThankYouPage] = useState(false);
 
@@ -25,18 +25,18 @@ export default function Contact({ contact }) {
     if (!accessKey) {
       setStatus({
         type: 'error',
-        message: 'Web3Forms is not configured yet. Add VITE_WEB3FORMS_ACCESS_KEY.'
+        messageKey: 'notConfigured'
       });
       return;
     }
 
     if (formData.botcheck) {
-      setStatus({ type: 'error', message: 'Sending failed. Please try again in a moment.' });
+      setStatus({ type: 'error', messageKey: 'failed' });
       return;
     }
 
     setIsSending(true);
-    setStatus({ type: '', message: '' });
+    setStatus({ type: '', messageKey: '' });
 
     try {
       const submitData = new FormData(event.target);
@@ -53,18 +53,18 @@ export default function Contact({ contact }) {
         throw new Error(`Web3Forms request failed with status ${response.status}`);
       }
 
-      setStatus({ type: 'success', message: 'Message sent successfully. I will get back to you soon.' });
+      setStatus({ type: 'success', messageKey: 'success' });
       setFormData({ name: '', email: '', subject: '', message: '', botcheck: '' });
       setShowThankYouPage(true);
     } catch (error) {
-      setStatus({ type: 'error', message: 'Sending failed. Please try again in a moment.' });
+      setStatus({ type: 'error', messageKey: 'failed' });
     } finally {
       setIsSending(false);
     }
   };
 
   if (showThankYouPage) {
-    return <ThankYouPage onBack={() => setShowThankYouPage(false)} />;
+    return <ThankYouPage onBack={() => setShowThankYouPage(false)} data={thankYouCopy} />;
   }
 
   return (
@@ -73,8 +73,8 @@ export default function Contact({ contact }) {
         <div className="row">
           <div className="col-lg-12">
             <div className="section-title text-center">
-              <span className="subtitle">{contact.subtitle}</span>
-              <h2 className="title">{contact.title}</h2>
+              <span className="subtitle">{copy.subtitle}</span>
+              <h2 className="title">{copy.title}</h2>
             </div>
           </div>
         </div>
@@ -95,7 +95,7 @@ export default function Contact({ contact }) {
                 />
 
                 <div className="form-group">
-                  <label htmlFor="contact-name">Your Name</label>
+                  <label htmlFor="contact-name">{copy.name}</label>
                   <input
                     id="contact-name"
                     name="name"
@@ -107,7 +107,7 @@ export default function Contact({ contact }) {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="contact-email">Email</label>
+                  <label htmlFor="contact-email">{copy.email}</label>
                   <input
                     id="contact-email"
                     name="email"
@@ -119,7 +119,7 @@ export default function Contact({ contact }) {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="contact-subject">Subject</label>
+                  <label htmlFor="contact-subject">{copy.subject}</label>
                   <input
                     id="contact-subject"
                     name="subject"
@@ -131,7 +131,7 @@ export default function Contact({ contact }) {
                 </div>
 
                 <div className="form-group">
-                  <label htmlFor="contact-message">Message</label>
+                  <label htmlFor="contact-message">{copy.message}</label>
                   <textarea
                     id="contact-message"
                     name="message"
@@ -141,10 +141,10 @@ export default function Contact({ contact }) {
                   />
                 </div>
 
-                <input type="submit" value={isSending ? 'Sending...' : 'Send Message'} disabled={isSending} />
-                {status.message ? (
+                <input type="submit" value={isSending ? copy.sending : copy.send} disabled={isSending} />
+                {status.messageKey ? (
                   <p className={`form-message ${status.type === 'error' ? 'error' : 'success'} mt--20`}>
-                    {status.message}
+                    {copy[status.messageKey]}
                   </p>
                 ) : null}
               </form>
