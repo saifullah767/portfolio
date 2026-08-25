@@ -33,6 +33,7 @@ export const portfolioData = {
       'Remote full-stack web developer building React, Vue, Tailwind, Laravel, and AI-powered web applications.',
     role: 'Full-Stack Web Developer | React, Vue, Tailwind, Laravel, AI Integrations',
     email: 'hello@iamsaifullah.com',
+    location: 'Germany',
     avatar: '/assets/images/portfolio-my-image.png',
     logo: '/assets/images/logo-for-portfolio.png',
     cvUrl: '/assets/Saifullah-resume.pdf',
@@ -41,7 +42,7 @@ export const portfolioData = {
     inlineSocialTitle: 'You can also find me at:'
   },
   details: {
-    subtitle: '4+ Years of Experience',
+    subtitle: '5+ Years of Experience',
     tabs: [
       { id: 'education', label: 'education' },
       { id: 'professional', label: 'professional Skills' },
@@ -50,72 +51,64 @@ export const portfolioData = {
     educationColumns: [
       [
         {
-          title: 'Microverse',
-          subtitle: 'Global Remote School of Programming',
-          description:
-            'Microverse Graduate | Full Stack Web Developer Training | Emphasis on remote collaboration and real-world project experience'
-        },
-        {
-          title: 'Intermediate',
-          subtitle: 'Pre-Enginering',
-          description:
-            'This preparatory phase equips students with the essential knowledge and problem-solving skills necessary for success in diverse engineering disciplines.'
+          id: 'bachelors',
+          title: 'FUUAST',
+          subtitle: "Bachelor's Degree | 2019 - 2022",
+          description: "Bachelor's degree completed at FUUAST."
         }
       ],
       [
         {
-          title: 'Aptech',
-          subtitle: 'School Of Information Technology',
+          id: 'microverse',
+          title: 'Microverse',
+          subtitle: 'Remote Software Development Program | 2022',
           description:
-            'Aptech Certified Professional | Developed practical skills for effective problem-solving and software development.'
-        },
-        {
-          title: 'Bachelors',
-          subtitle: 'Bachelors in Studies',
-          description:
-            'Bachelors degree in International Relations which helps me to understand world politics, cold war, and decision making in critical conditions.'
+            'Completed 1,300+ hours of full-stack development and remote collaboration training.'
         }
       ]
     ],
-    skills: {
-      design: [
-        { name: 'FIGMA', percent: 85 },
-        { name: 'CANVA', percent: 70 },
-        { name: 'PORTFOLIO', percent: 75 },
-        { name: 'LANDING PAGE', percent: 88 },
-        { name: 'TAILWIND CSS', percent: 75 },
-        { name: 'BOOTSTRAP', percent: 75 }
-      ],
-      development: [
-        { name: 'REACT JS', percent: 85 },
-        { name: 'VUE JS', percent: 88 },
-        { name: 'HTML/ CSS / VANILLA JAVASCRIPT', percent: 90 },
-        { name: 'PHP LARAVEL', percent: 77 },
-        { name: 'DATABASE', percent: 77 },
-        { name: 'API DEVELOPMENT', percent: 81 }
-      ]
-    },
+    skills: [
+      {
+        id: 'frontend',
+        items: ['React', 'Redux', 'Vue.js', 'Pinia', 'JavaScript', 'Tailwind CSS', 'HTML/CSS']
+      },
+      {
+        id: 'backend',
+        items: ['PHP', 'Laravel', 'REST APIs', 'Databases', 'Async job queues']
+      },
+      {
+        id: 'aiProduct',
+        items: ['AI integrations', 'Agentic workflows', 'Tool calling', 'Prompt engineering', 'SaaS', 'E-commerce']
+      },
+      {
+        id: 'delivery',
+        items: ['Git/GitHub', 'Code reviews', 'Remote pair programming', 'Mentoring', 'Fabric.js', 'MJML']
+      }
+    ],
     experienceColumns: [
       [
         {
-          title: 'Microverse',
-          subtitle: 'Student Intern',
+          id: 'jeeglo',
+          title: 'Jeeglo',
+          subtitle: 'Full-Stack Developer | 2022 - Present',
           description:
-            'As a student intern I had opportunities for code reviews, providing and receiving constructive feedback from peers and mentors to improve coding abilities.'
+            'Build Vue.js and Tailwind CSS interfaces, connect them to Laravel APIs and databases, and maintain the production landing-page builder I developed with Vue and Laravel.'
         },
         {
-          title: 'Jeeglo',
-          subtitle: 'Web Developer',
+          id: 'deevloopers',
+          title: 'Deevloopers',
+          subtitle: 'Full-Stack Developer | 2021 - 2022',
           description:
-            'Worked on Vue.js frontend development, created Laravel APIs, and connected frontend interfaces with backend Laravel databases.'
+            'Created front-end interfaces, connected them to PHP back ends and databases, and supported end-to-end feature delivery.'
         }
       ],
       [
         {
+          id: 'mentor',
           title: 'Microverse',
-          subtitle: 'Mentor',
+          subtitle: 'Volunteer Mentor | Feb 2022 - Present',
           description:
-            'Guided students when they were stuck on coding problems, helped build communication skills, and supported collaboration with globally distributed teams.'
+            'Mentor junior developers through code reviews, debugging support, clean-code guidance, and remote collaboration.'
         }
       ]
     ]
@@ -131,21 +124,27 @@ export const portfolioData = {
         label: 'Product contribution',
         logo: '/assets/images/client-work/grawt.png',
         logoStyle: 'wordmark',
-        url: 'https://www.grawt.com/'
+        url: 'https://www.grawt.com/',
+        descriptionKey: 'grawt',
+        tags: ['Agentic AI', 'Vue', 'Laravel', 'MJML']
       },
       {
         name: 'Redeemlo',
         label: 'Product contribution',
         logo: '/assets/images/client-work/redeemlo.webp',
         logoStyle: 'wide',
-        url: 'https://www.redeemlo.com/'
+        url: 'https://www.redeemlo.com/',
+        descriptionKey: 'redeemlo',
+        tags: ['Fabric.js', 'Campaigns', 'Custom domains']
       },
       {
         name: 'Unfold.video',
         label: 'Product contribution',
         logo: '/assets/images/client-work/unfold-video.webp',
         logoStyle: 'wide',
-        url: 'https://www.unfold.video/'
+        url: 'https://www.unfold.video/',
+        descriptionKey: 'unfold',
+        tags: ['Video marketing', 'Production SaaS']
       },
       {
         name: 'KuickList',
@@ -153,21 +152,27 @@ export const portfolioData = {
         logo: '/assets/images/client-work/kuicklist.png',
         logoStyle: 'icon',
         iconPlate: true,
-        url: 'https://www.kuicklist.com/'
+        url: 'https://www.kuicklist.com/',
+        descriptionKey: 'kuicklist',
+        tags: ['Lead generation', 'Marketing SaaS']
       },
       {
         name: 'ProductDyno',
         label: 'Product contribution',
         logo: '/assets/images/client-work/productdyno.png',
         logoStyle: 'icon',
-        url: 'https://productdyno.com/'
+        url: 'https://productdyno.com/',
+        descriptionKey: 'productdyno',
+        tags: ['AI agents', 'Embeddable UI', 'SaaS']
       },
       {
         name: 'ListWeaver',
         label: 'Product contribution',
         logo: '/assets/images/client-work/listweaver.webp',
         logoStyle: 'wide',
-        url: 'https://listweaver.app/'
+        url: 'https://listweaver.app/',
+        descriptionKey: 'listweaver',
+        tags: ['AI Skills', 'Lead magnets', 'Workflows']
       }
     ]
   },
@@ -175,48 +180,86 @@ export const portfolioData = {
     "A selection of personal products, practical experiments, and web experiences I've built.",
   projects: [
     {
+      id: 'brandOs',
+      categoryKey: 'brandOsCategory',
+      titleKey: 'brandOsTitle',
+      descriptionKey: 'brandOsDescription',
+      title: 'BRAND OS',
+      category: 'AI Brand Workspace',
+      image: null,
+      url: null,
+      tags: ['AI Skills', 'Brand systems', 'Content generation']
+    },
+    {
+      id: 'siteSnap',
+      categoryKey: 'siteSnapCategory',
+      titleKey: 'siteSnapTitle',
+      descriptionKey: 'siteSnapDescription',
       category: 'Personal Tool',
       title: 'SITESNAP LIVE WEBSITE MOCKUP GENERATOR',
       image: '/assets/images/my-projects/site-snap-1.png',
-      url: 'https://sitesnap.iamsaifullah.com/'
+      url: 'https://sitesnap.iamsaifullah.com/',
+      tags: ['Responsive preview', 'Screenshot automation']
     },
     {
+      id: 'kanban',
+      categoryKey: 'kanbanCategory',
+      titleKey: 'kanbanTitle',
+      descriptionKey: 'kanbanDescription',
       category: 'Old Todo List -> New Kanban Board',
       title: 'KANBAN BOARD WORKFLOW UPGRADE',
       image: '/assets/images/my-projects/kanban.png',
-      url: 'https://kanban.iamsaifullah.com/'
+      url: 'https://kanban.iamsaifullah.com/',
+      tags: ['Drag and drop', 'Google sync', 'Responsive UI']
     },
     {
+      id: 'kuickstore',
+      categoryKey: 'kuickstoreCategory',
+      titleKey: 'kuickstoreTitle',
+      descriptionKey: 'kuickstoreDescription',
       category: 'AI E-commerce Store Builder',
       title: 'KUICKSTORE',
       image: '/assets/images/my-projects/product-cart.png',
-      url: 'https://kuickstore.com'
-    },
+      url: 'https://kuickstore.com',
+      tags: ['E-commerce', 'Storefronts', 'Analytics']
+    }
+  ],
+  earlierProjects: [
     {
+      id: 'capstone',
+      titleKey: 'capstoneTitle',
       category: 'CAPSTONE PROJECT',
       title: 'CC GLOBAL SUMMIT LANDING PAGE',
       image: '/assets/images/my-projects/project001.png',
       url: 'https://saifullah767.github.io/capstone/'
     },
     {
+      id: 'roundHome',
+      titleKey: 'roundHomeTitle',
       category: 'Upwork Project',
       title: 'Round Home || Landing Page',
       image: '/assets/images/my-projects/project-upwork-round.png',
       url: 'https://up-work-test-46on.vercel.app/'
     },
     {
+      id: 'oldPortfolio',
+      titleKey: 'oldPortfolioTitle',
       category: 'My Previous Portfolio',
       title: 'My Previous portfolio based on React JS',
       image: '/assets/images/my-projects/project-oldprotfolio.png',
       url: 'https://saifullah767.github.io/My-portfolio/'
     },
     {
+      id: 'books',
+      titleKey: 'booksTitle',
       category: 'Awesome Books',
       title: 'Project Based on Vanilla JS to store data',
       image: '/assets/images/my-projects/project-awesomeBooks.png',
       url: 'https://saifullah767.github.io/Awesome-Books-ES6/'
     },
     {
+      id: 'template',
+      titleKey: 'templateTitle',
       category: 'Portfolio Website Project',
       title: 'Figma to HTML / CSS convert template project',
       image: '/assets/images/my-projects/project-portfolio-module.png',
@@ -307,8 +350,8 @@ export const portfolioData = {
     logo: '/assets/images/logo-for-portfolio.png',
     groups: [
       {
-        title: 'Experties',
-        links: ['Vue JS', 'React JS', 'Laravel', 'Database Structure', 'Web-Design']
+        title: 'Expertise',
+        links: ['Vue.js', 'React', 'Laravel', 'AI Integrations', 'SaaS Products']
       },
       {
         title: 'Services',

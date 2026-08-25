@@ -1,4 +1,5 @@
 import SocialLinks from './SocialLinks';
+import { interpolate } from '../translations';
 
 export default function About({ about, socialLinks, copy }) {
   return (
@@ -29,6 +30,10 @@ export default function About({ about, socialLinks, copy }) {
                         <div className="info">
                           <i className="feather-mail" aria-hidden="true" />
                           <a href={`mailto:${about.email}`}>{about.email}</a>
+                        </div>
+                        <div className="info">
+                          <i className="feather-map-pin" aria-hidden="true" />
+                          <span>{interpolate(copy.locationLine, { location: about.location })}</span>
                         </div>
 
                         <div id="footer-inline" className="rn-footer-area footer-style-2 section-separator">

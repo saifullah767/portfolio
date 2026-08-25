@@ -22,7 +22,11 @@ export default function PortfolioPage({ data, copy, locale, locales, onLocaleCha
       >
         <About about={data.about} socialLinks={data.socialLinks} copy={copy.about} />
         <ClientWork clientWork={data.clientWork} copy={copy.clientWork} />
-        <Projects projects={data.projects} copy={copy.projects} />
+        <Projects
+          projects={data.projects}
+          earlierProjects={data.earlierProjects}
+          copy={copy.projects}
+        />
         <MyDetails details={data.details} copy={copy.details} />
         <Testimonials testimonials={data.testimonials} copy={copy.testimonials} />
         <Certifications certifications={data.certifications} copy={copy.certifications} />

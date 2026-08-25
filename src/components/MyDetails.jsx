@@ -22,99 +22,45 @@ function ResumeList({ items }) {
   );
 }
 
-function SkillCharts({ title, skills, subtitle }) {
+function SkillGroups({ groups, copy }) {
   return (
-    <div className="progress-wrapper">
-      <div className="content">
-        <span className="subtitle">{subtitle}</span>
-        <h4 className="maintitle">{title}</h4>
-
-        {skills.map((skill) => (
-          <div key={skill.name} className="progress-charts">
-            <h6 className="heading heading-h6">{skill.name}</h6>
-            <div className="progress">
-              <div
-                className="progress-bar"
-                role="progressbar"
-                style={{ width: `${skill.percent}%` }}
-                aria-valuenow={skill.percent}
-                aria-valuemin="0"
-                aria-valuemax="100"
-              />
-            </div>
+    <div className="portfolio-skill-grid">
+      {groups.map((group) => (
+        <section key={group.id} className="portfolio-skill-card">
+          <span className="portfolio-skill-card__eyebrow">{copy.features}</span>
+          <h4>{copy.skillGroups[group.id]}</h4>
+          <div className="portfolio-skill-card__items">
+            {group.items.map((skill) => (
+              <span key={skill}>{skill}</span>
+            ))}
           </div>
-        ))}
-      </div>
+        </section>
+      ))}
     </div>
   );
 }
 
-const skillCopyKeys = {
-  PORTFOLIO: 'portfolio',
-  'LANDING PAGE': 'landingPage',
-  DATABASE: 'database',
-  'API DEVELOPMENT': 'apiDevelopment'
-};
+function localizeColumns(columns, translations) {
+  return columns.map((column) =>
+    column.map((item) => {
+      const localized = translations[item.id];
+
+      return localized
+        ? {
+            ...item,
+            subtitle: localized.subtitle,
+            description: localized.description
+          }
+        : item;
+    })
+  );
+}
 
 export default function MyDetails({ details, copy }) {
   const [activeTab, setActiveTab] = useState('professional');
 
-  const educationColumns = [
-    [
-      {
-        ...details.educationColumns[0][0],
-        subtitle: copy.education.microverseSubtitle,
-        description: copy.education.microverseDescription
-      },
-      {
-        ...details.educationColumns[0][1],
-        title: copy.education.intermediateTitle,
-        subtitle: copy.education.intermediateSubtitle,
-        description: copy.education.intermediateDescription
-      }
-    ],
-    [
-      {
-        ...details.educationColumns[1][0],
-        subtitle: copy.education.aptechSubtitle,
-        description: copy.education.aptechDescription
-      },
-      {
-        ...details.educationColumns[1][1],
-        title: copy.education.bachelorsTitle,
-        subtitle: copy.education.bachelorsSubtitle,
-        description: copy.education.bachelorsDescription
-      }
-    ]
-  ];
-
-  const experienceColumns = [
-    [
-      {
-        ...details.experienceColumns[0][0],
-        subtitle: copy.experience.internTitle,
-        description: copy.experience.internDescription
-      },
-      {
-        ...details.experienceColumns[0][1],
-        subtitle: copy.experience.developerTitle,
-        description: copy.experience.developerDescription
-      }
-    ],
-    [
-      {
-        ...details.experienceColumns[1][0],
-        subtitle: copy.experience.mentorTitle,
-        description: copy.experience.mentorDescription
-      }
-    ]
-  ];
-
-  const localizeSkills = (skills) =>
-    skills.map((skill) => ({
-      ...skill,
-      name: copy.skillNames[skillCopyKeys[skill.name]] ?? skill.name
-    }));
+  const educationColumns = localizeColumns(details.educationColumns, copy.education);
+  const experienceColumns = localizeColumns(details.experienceColumns, copy.experience);
 
   return (
     <div className="rn-resume-area rn-section-gap section-separator" id="resume">
@@ -162,23 +108,7 @@ export default function MyDetails({ details, copy }) {
 
               <div className={`tab-pane fade${activeTab === 'professional' ? ' show active' : ''}`}>
                 <div className="personal-experience-inner mt--40">
-                  <div className="row row--40">
-                    <div className="col-lg-6 col-md-6 col-12">
-                      <SkillCharts
-                        title={copy.designSkills}
-                        skills={localizeSkills(details.skills.design)}
-                        subtitle={copy.features}
-                      />
-                    </div>
-
-                    <div className="col-lg-6 col-md-6 col-12 mt_sm--60">
-                      <SkillCharts
-                        title={copy.developmentSkills}
-                        skills={localizeSkills(details.skills.development)}
-                        subtitle={copy.features}
-                      />
-                    </div>
-                  </div>
+                  <SkillGroups groups={details.skills} copy={copy} />
                 </div>
               </div>
 

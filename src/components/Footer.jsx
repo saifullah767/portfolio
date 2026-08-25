@@ -4,13 +4,7 @@ export default function Footer({ footer, socialLinks, copy, logoAlt }) {
   const groups = [
     {
       title: copy.expertise,
-      links: [
-        footer.groups[0].links[0],
-        footer.groups[0].links[1],
-        footer.groups[0].links[2],
-        copy.databaseStructure,
-        copy.webDesign
-      ]
+      links: footer.groups[0].links
     },
     {
       title: copy.services,

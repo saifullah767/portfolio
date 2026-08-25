@@ -50,6 +50,14 @@ export default function ClientWork({ clientWork, copy }) {
 
                 <strong className="portfolio-client-work__name">{product.name}</strong>
                 <span className="portfolio-client-work__label">{copy.contribution}</span>
+                <p className="portfolio-client-work__summary">
+                  {copy.items[product.descriptionKey]}
+                </p>
+                <span className="portfolio-client-work__tags" aria-label={copy.technologies}>
+                  {product.tags.map((tag) => (
+                    <span key={tag}>{tag}</span>
+                  ))}
+                </span>
               </a>
             ))}
           </div>

@@ -1,45 +1,13 @@
-import { useEffect, useMemo, useState } from 'react';
-import { interpolate } from '../translations';
-
-const projectCopyKeys = [
-  ['siteSnapCategory', 'siteSnapTitle'],
-  ['kanbanCategory', 'kanbanTitle'],
-  ['kuickstoreCategory', null],
-  ['capstoneCategory', 'capstoneTitle'],
-  ['roundHomeCategory', 'roundHomeTitle'],
-  ['oldPortfolioCategory', 'oldPortfolioTitle'],
-  ['booksCategory', 'booksTitle'],
-  ['templateCategory', 'templateTitle']
-];
-
-function useVisibleCount() {
-  const [width, setWidth] = useState(typeof window !== 'undefined' ? window.innerWidth : 1200);
-
-  useEffect(() => {
-    const onResize = () => setWidth(window.innerWidth);
-    window.addEventListener('resize', onResize);
-    return () => window.removeEventListener('resize', onResize);
-  }, []);
-
-  if (width < 868) return 1;
-  if (width < 1124) return 2;
-  return 3;
-}
-
-export default function Projects({ projects, copy }) {
-  const visibleCount = useVisibleCount();
-  const totalPages = Math.max(Math.ceil(projects.length / visibleCount), 1);
-  const [pageIndex, setPageIndex] = useState(0);
-  const startIndex = pageIndex * visibleCount;
-
-  useEffect(() => {
-    setPageIndex((previous) => Math.min(previous, totalPages - 1));
-  }, [totalPages]);
-
-  const visibleProjects = useMemo(
-    () => projects.slice(startIndex, startIndex + visibleCount),
-    [projects, startIndex, visibleCount]
-  );
+export default function Projects({ projects, earlierProjects, copy }) {
+  const renderTitle = (project, title) =>
+    project.url ? (
+      <a href={project.url} target="_blank" rel="noreferrer">
+        {title}
+        <i className="feather-arrow-up-right" aria-hidden="true" />
+      </a>
+    ) : (
+      <span>{title}</span>
+    );
 
   return (
     <div id="portfolio" className="rn-portfolio-area portfolio-style-three rn-section-gap section-separator">
@@ -56,32 +24,30 @@ export default function Projects({ projects, copy }) {
 
         <div className="row mt--25 mt_md--5 mt_sm--5">
           <div className="col-lg-12">
-            <div className="portfolio-project-carousel">
-              <button
-                type="button"
-                className="portfolio-project-carousel__arrow portfolio-project-carousel__arrow--previous"
-                onClick={() => setPageIndex((previous) => Math.max(previous - 1, 0))}
-                disabled={pageIndex === 0}
-                aria-label={copy.previous}
-              >
-                <i className="feather-arrow-left" aria-hidden="true" />
-              </button>
-
-              <div className="portfolio-wrapper portfolio-slick-activation slick-arrow-style-one rn-slick-dot-style portfolio-react-grid">
-                {visibleProjects.map((project, visibleIndex) => {
-                  const projectIndex = startIndex + visibleIndex;
-                  const [categoryKey, titleKey] = projectCopyKeys[projectIndex] ?? [];
-                  const category = copy.items[categoryKey] ?? project.category;
-                  const title = titleKey ? copy.items[titleKey] : project.title;
+              <div className="portfolio-wrapper portfolio-react-grid portfolio-featured-projects">
+                {projects.map((project) => {
+                  const category = copy.items[project.categoryKey] ?? project.category;
+                  const title = copy.items[project.titleKey] ?? project.title;
 
                   return (
-                  <div key={project.url} className="rn-portfolio-slick">
+                  <div key={project.id} className="rn-portfolio-slick">
                     <div className="rn-portfolio">
                       <div className="inner">
                         <div className="thumbnail">
-                          <a href={project.url} target="_blank" rel="noreferrer">
-                            <img style={{ height: '150px' }} src={project.image} alt={title} />
-                          </a>
+                          {project.image ? (
+                            project.url ? (
+                              <a href={project.url} target="_blank" rel="noreferrer">
+                                <img src={project.image} alt={title} />
+                              </a>
+                            ) : (
+                              <img src={project.image} alt={title} />
+                            )
+                          ) : (
+                            <div className="portfolio-project-placeholder" aria-hidden="true">
+                              <span>BRAND</span>
+                              <strong>OS</strong>
+                            </div>
+                          )}
                         </div>
                         <div className="content">
                           <div className="category-info">
@@ -89,12 +55,18 @@ export default function Projects({ projects, copy }) {
                               <span>{category}</span>
                             </div>
                           </div>
-                          <h4 className="title">
-                            <a href={project.url} target="_blank" rel="noreferrer">
-                              {title}
-                              <i className="feather-arrow-up-right" aria-hidden="true" />
-                            </a>
-                          </h4>
+                          <h4 className="title">{renderTitle(project, title)}</h4>
+                          <p className="portfolio-project-card__description">
+                            {copy.items[project.descriptionKey]}
+                          </p>
+                          <div className="portfolio-project-card__tags">
+                            {project.tags.map((tag) => (
+                              <span key={tag}>{tag}</span>
+                            ))}
+                          </div>
+                          {!project.url ? (
+                            <span className="portfolio-project-card__status">{copy.privateProject}</span>
+                          ) : null}
                         </div>
                       </div>
                     </div>
@@ -103,36 +75,18 @@ export default function Projects({ projects, copy }) {
                 })}
               </div>
 
-              <button
-                type="button"
-                className="portfolio-project-carousel__arrow portfolio-project-carousel__arrow--next"
-                onClick={() =>
-                  setPageIndex((previous) => Math.min(previous + 1, totalPages - 1))
-                }
-                disabled={pageIndex === totalPages - 1}
-                aria-label={copy.next}
-              >
-                <i className="feather-arrow-right" aria-hidden="true" />
-              </button>
-            </div>
-
-            {totalPages > 1 ? (
-              <div className="portfolio-project-carousel__dots" aria-label={copy.pages}>
-                {Array.from({ length: totalPages }, (_, index) => (
-                  <button
-                    key={`project-page-${index + 1}`}
-                    type="button"
-                    className={pageIndex === index ? 'active' : ''}
-                    onClick={() => setPageIndex(index)}
-                    aria-label={interpolate(copy.showPage, {
-                      current: index + 1,
-                      total: totalPages
-                    })}
-                    aria-current={pageIndex === index ? 'page' : undefined}
-                  />
-                ))}
+              <div className="portfolio-earlier-work">
+                <span className="subtitle">{copy.earlierSubtitle}</span>
+                <h3>{copy.earlierTitle}</h3>
+                <div className="portfolio-earlier-work__links">
+                  {earlierProjects.map((project) => (
+                    <a key={project.id} href={project.url} target="_blank" rel="noreferrer">
+                      {copy.items[project.titleKey] ?? project.title}
+                      <i className="feather-arrow-up-right" aria-hidden="true" />
+                    </a>
+                  ))}
+                </div>
               </div>
-            ) : null}
           </div>
         </div>
       </div>
