@@ -41,7 +41,7 @@ export const portfolioData = {
     inlineSocialTitle: 'You can also find me at:'
   },
   details: {
-    subtitle: '4+ Years of Experience',
+    subtitle: '5+ Years of Experience',
     tabs: [
       { id: 'education', label: 'education' },
       { id: 'professional', label: 'professional Skills' },

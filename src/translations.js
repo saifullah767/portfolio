@@ -103,7 +103,7 @@ export const translations = {
       }
     },
     details: {
-      subtitle: '4+ Years of Experience',
+      subtitle: '5+ Years of Experience',
       title: 'My Details',
       tabs: {
         education: 'Education',
