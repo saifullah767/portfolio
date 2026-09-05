@@ -62,6 +62,7 @@ export const translations = {
       socialTitle: 'You can also find me on:',
       downloadPrompt: 'Download my résumé:',
       downloadButton: 'DOWNLOAD CV',
+      downloadMenuLabel: 'Choose résumé language',
       contactButton: 'CONTACT ME',
       portraitAlt: 'Portrait of Saifullah'
     },
@@ -111,15 +112,25 @@ export const translations = {
         experience: 'Experience'
       },
       features: 'Skills',
-      designSkills: 'Design Skills',
-      developmentSkills: 'Development Skills',
+      skillsTitle: 'Skills',
       educationTitle: 'Education',
       experienceTitle: 'Job Experience',
       skillNames: {
-        portfolio: 'PORTFOLIO',
-        landingPage: 'LANDING PAGE',
-        database: 'DATABASE',
-        apiDevelopment: 'API DEVELOPMENT'
+        fullStackSaas: 'FULL-STACK SAAS DEVELOPMENT',
+        aiProductDevelopment: 'AI PRODUCT DEVELOPMENT',
+        aiAgents: 'AI AGENTS, MEMORY & TOOL CALLING',
+        aiWorkflows: 'AI SKILLS & WORKFLOW AUTOMATION',
+        frontendStack: 'REACT, VUE, REDUX & PINIA',
+        backendStack: 'PHP, LARAVEL & REST APIS',
+        databaseWorkflows: 'DATABASE & DATA WORKFLOW DESIGN',
+        ecommercePlatforms: 'E-COMMERCE PLATFORM DEVELOPMENT',
+        marketingAutomation: 'MARKETING & LEAD AUTOMATION',
+        embeddableWidgets: 'EMBEDDABLE JAVASCRIPT WIDGETS',
+        interactiveEditors: 'INTERACTIVE EDITOR DEVELOPMENT',
+        thirdPartyIntegrations: 'THIRD-PARTY INTEGRATIONS & SYNC',
+        responsiveUi: 'RESPONSIVE UI ENGINEERING',
+        productBuilding: 'PRODUCT BUILDING & MVP DELIVERY',
+        collaboration: 'CODE REVIEWS, MENTORING & REMOTE COLLABORATION'
       },
       education: {
         microverseSubtitle: 'Global Remote School of Programming',
@@ -154,8 +165,8 @@ export const translations = {
       source: 'via LinkedIn',
       pairProgramming: 'Pair Programming',
       imageAlt: 'Testimonial from {name}',
-      pagination: 'Testimonial pagination',
-      goTo: 'Go to testimonial {number}',
+      previous: 'Show previous testimonial',
+      next: 'Show next testimonial',
       roles: {
         juan: 'Industrial Engineer and Full-Stack Web Developer',
         arturo: 'Full-Stack Web Developer | JavaScript | .NET MVC | React | Redux',
@@ -264,6 +275,7 @@ export const translations = {
       socialTitle: 'Du kan også finde mig på:',
       downloadPrompt: 'Download mit CV:',
       downloadButton: 'DOWNLOAD CV',
+      downloadMenuLabel: 'Vælg sprog til CV',
       contactButton: 'KONTAKT MIG',
       portraitAlt: 'Portræt af Saifullah'
     },
@@ -313,15 +325,25 @@ export const translations = {
         experience: 'Erfaring'
       },
       features: 'Kompetencer',
-      designSkills: 'Designkompetencer',
-      developmentSkills: 'Udviklingskompetencer',
+      skillsTitle: 'Kompetencer',
       educationTitle: 'Uddannelse',
       experienceTitle: 'Erhvervserfaring',
       skillNames: {
-        portfolio: 'PORTFOLIO',
-        landingPage: 'LANDINGSSIDE',
-        database: 'DATABASE',
-        apiDevelopment: 'API-UDVIKLING'
+        fullStackSaas: 'FULL-STACK SAAS-UDVIKLING',
+        aiProductDevelopment: 'AI-PRODUKTUDVIKLING',
+        aiAgents: 'AI-AGENTER, HUKOMMELSE & TOOL CALLING',
+        aiWorkflows: 'AI-SKILLS & WORKFLOW-AUTOMATISERING',
+        frontendStack: 'REACT, VUE, REDUX & PINIA',
+        backendStack: 'PHP, LARAVEL & REST-API’ER',
+        databaseWorkflows: 'DATABASE- & DATAWORKFLOW-DESIGN',
+        ecommercePlatforms: 'UDVIKLING AF E-HANDELSPLATFORME',
+        marketingAutomation: 'MARKETING- & LEADAUTOMATISERING',
+        embeddableWidgets: 'INTEGRERBARE JAVASCRIPT-WIDGETS',
+        interactiveEditors: 'UDVIKLING AF INTERAKTIVE EDITORER',
+        thirdPartyIntegrations: 'TREDJEPARTSINTEGRATIONER & SYNKRONISERING',
+        responsiveUi: 'RESPONSIV UI-UDVIKLING',
+        productBuilding: 'PRODUKTUDVIKLING & MVP-LEVERING',
+        collaboration: 'KODEGENNEMGANG, MENTORING & REMOTE SAMARBEJDE'
       },
       education: {
         microverseSubtitle: 'Global skole for remote programmering',
@@ -356,8 +378,8 @@ export const translations = {
       source: 'via LinkedIn',
       pairProgramming: 'Parprogrammering',
       imageAlt: 'Anbefaling fra {name}',
-      pagination: 'Navigation mellem anbefalinger',
-      goTo: 'Gå til anbefaling {number}',
+      previous: 'Vis forrige anbefaling',
+      next: 'Vis næste anbefaling',
       roles: {
         juan: 'Industriingeniør og full-stack-webudvikler',
         arturo: 'Full-stack-webudvikler | JavaScript | .NET MVC | React | Redux',
@@ -466,6 +488,7 @@ export const translations = {
       socialTitle: 'Du findest mich auch auf:',
       downloadPrompt: 'Meinen Lebenslauf herunterladen:',
       downloadButton: 'LEBENSLAUF',
+      downloadMenuLabel: 'Sprache des Lebenslaufs auswählen',
       contactButton: 'KONTAKT',
       portraitAlt: 'Porträt von Saifullah'
     },
@@ -515,15 +538,25 @@ export const translations = {
         experience: 'Erfahrung'
       },
       features: 'Kenntnisse',
-      designSkills: 'Designkenntnisse',
-      developmentSkills: 'Entwicklungskenntnisse',
+      skillsTitle: 'Kenntnisse',
       educationTitle: 'Ausbildung',
       experienceTitle: 'Berufserfahrung',
       skillNames: {
-        portfolio: 'PORTFOLIO',
-        landingPage: 'LANDINGPAGE',
-        database: 'DATENBANK',
-        apiDevelopment: 'API-ENTWICKLUNG'
+        fullStackSaas: 'FULL-STACK-SAAS-ENTWICKLUNG',
+        aiProductDevelopment: 'KI-PRODUKTENTWICKLUNG',
+        aiAgents: 'KI-AGENTEN, MEMORY & TOOL CALLING',
+        aiWorkflows: 'KI-SKILLS & WORKFLOW-AUTOMATISIERUNG',
+        frontendStack: 'REACT, VUE, REDUX & PINIA',
+        backendStack: 'PHP, LARAVEL & REST-APIS',
+        databaseWorkflows: 'DATENBANK- & DATENWORKFLOW-DESIGN',
+        ecommercePlatforms: 'E-COMMERCE-PLATTFORMENTWICKLUNG',
+        marketingAutomation: 'MARKETING- & LEAD-AUTOMATISIERUNG',
+        embeddableWidgets: 'EINBETTBARE JAVASCRIPT-WIDGETS',
+        interactiveEditors: 'ENTWICKLUNG INTERAKTIVER EDITOREN',
+        thirdPartyIntegrations: 'DRITTANBIETER-INTEGRATIONEN & SYNCHRONISIERUNG',
+        responsiveUi: 'RESPONSIVE UI-ENTWICKLUNG',
+        productBuilding: 'PRODUKTENTWICKLUNG & MVP-UMSETZUNG',
+        collaboration: 'CODE-REVIEWS, MENTORING & REMOTE-ZUSAMMENARBEIT'
       },
       education: {
         microverseSubtitle: 'Globale Schule für Remote-Programmierung',
@@ -558,8 +591,8 @@ export const translations = {
       source: 'über LinkedIn',
       pairProgramming: 'Pair Programming',
       imageAlt: 'Empfehlung von {name}',
-      pagination: 'Navigation der Empfehlungen',
-      goTo: 'Zur Empfehlung {number}',
+      previous: 'Vorherige Empfehlung anzeigen',
+      next: 'Nächste Empfehlung anzeigen',
       roles: {
         juan: 'Wirtschaftsingenieur und Full-Stack-Webentwickler',
         arturo: 'Full-Stack-Webentwickler | JavaScript | .NET MVC | React | Redux',

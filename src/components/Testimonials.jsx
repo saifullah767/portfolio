@@ -94,18 +94,24 @@ export default function Testimonials({ testimonials, copy }) {
                 </div>
               </div>
 
-              <ul className="portfolio-react-dots" aria-label={copy.pagination}>
-                {testimonials.map((item, index) => (
-                  <li key={item.name}>
-                    <button
-                      type="button"
-                      className={index === activeIndex ? 'active' : ''}
-                      onClick={() => setActiveIndex(index)}
-                      aria-label={interpolate(copy.goTo, { number: index + 1 })}
-                    />
-                  </li>
-                ))}
-              </ul>
+              <div className="testimonial-carousel__controls">
+                <button
+                  type="button"
+                  className="portfolio-carousel-button testimonial-carousel__arrow"
+                  onClick={prev}
+                  aria-label={copy.previous}
+                >
+                  <i className="feather-arrow-left" aria-hidden="true" />
+                </button>
+                <button
+                  type="button"
+                  className="portfolio-carousel-button testimonial-carousel__arrow"
+                  onClick={next}
+                  aria-label={copy.next}
+                >
+                  <i className="feather-arrow-right" aria-hidden="true" />
+                </button>
+              </div>
             </div>
           </div>
         </div>

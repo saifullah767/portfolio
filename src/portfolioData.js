@@ -35,8 +35,22 @@ export const portfolioData = {
     email: 'hello@iamsaifullah.com',
     avatar: '/assets/images/portfolio-my-image.png',
     logo: '/assets/images/logo-for-portfolio.png',
-    cvUrl: '/assets/Saifullah-resume.pdf',
-    cvDownloadName: 'saifullah.pdf',
+    resumes: [
+      {
+        code: 'en',
+        label: 'English',
+        description: 'English résumé · PDF',
+        url: '/assets/Saifullah.pdf',
+        downloadName: 'Saifullah-Resume-EN.pdf'
+      },
+      {
+        code: 'de',
+        label: 'Deutsch',
+        description: 'Deutscher Lebenslauf · PDF',
+        url: '/assets/Saifullah-DE.pdf',
+        downloadName: 'Saifullah-Lebenslauf-DE.pdf'
+      }
+    ],
     contactEmail: 'hello@iamsaifullah.com',
     inlineSocialTitle: 'You can also find me at:'
   },
@@ -77,24 +91,23 @@ export const portfolioData = {
         }
       ]
     ],
-    skills: {
-      design: [
-        { name: 'FIGMA', percent: 85 },
-        { name: 'CANVA', percent: 70 },
-        { name: 'PORTFOLIO', percent: 75 },
-        { name: 'LANDING PAGE', percent: 88 },
-        { name: 'TAILWIND CSS', percent: 75 },
-        { name: 'BOOTSTRAP', percent: 75 }
-      ],
-      development: [
-        { name: 'REACT JS', percent: 85 },
-        { name: 'VUE JS', percent: 88 },
-        { name: 'HTML/ CSS / VANILLA JAVASCRIPT', percent: 90 },
-        { name: 'PHP LARAVEL', percent: 77 },
-        { name: 'DATABASE', percent: 77 },
-        { name: 'API DEVELOPMENT', percent: 81 }
-      ]
-    },
+    skills: [
+      { key: 'fullStackSaas', name: 'FULL-STACK SAAS DEVELOPMENT' },
+      { key: 'aiProductDevelopment', name: 'AI PRODUCT DEVELOPMENT' },
+      { key: 'aiAgents', name: 'AI AGENTS, MEMORY & TOOL CALLING' },
+      { key: 'aiWorkflows', name: 'AI SKILLS & WORKFLOW AUTOMATION' },
+      { key: 'frontendStack', name: 'REACT, VUE, REDUX & PINIA' },
+      { key: 'backendStack', name: 'PHP, LARAVEL & REST APIS' },
+      { key: 'databaseWorkflows', name: 'DATABASE & DATA WORKFLOW DESIGN' },
+      { key: 'ecommercePlatforms', name: 'E-COMMERCE PLATFORM DEVELOPMENT' },
+      { key: 'marketingAutomation', name: 'MARKETING & LEAD AUTOMATION' },
+      { key: 'embeddableWidgets', name: 'EMBEDDABLE JAVASCRIPT WIDGETS' },
+      { key: 'interactiveEditors', name: 'INTERACTIVE EDITOR DEVELOPMENT' },
+      { key: 'thirdPartyIntegrations', name: 'THIRD-PARTY INTEGRATIONS & SYNC' },
+      { key: 'responsiveUi', name: 'RESPONSIVE UI ENGINEERING' },
+      { key: 'productBuilding', name: 'PRODUCT BUILDING & MVP DELIVERY' },
+      { key: 'collaboration', name: 'CODE REVIEWS, MENTORING & REMOTE COLLABORATION' }
+    ],
     experienceColumns: [
       [
         {

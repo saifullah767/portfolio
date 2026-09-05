@@ -59,7 +59,7 @@ export default function Projects({ projects, copy }) {
             <div className="portfolio-project-carousel">
               <button
                 type="button"
-                className="portfolio-project-carousel__arrow portfolio-project-carousel__arrow--previous"
+                className="portfolio-carousel-button portfolio-project-carousel__arrow portfolio-project-carousel__arrow--previous"
                 onClick={() => setPageIndex((previous) => Math.max(previous - 1, 0))}
                 disabled={pageIndex === 0}
                 aria-label={copy.previous}
@@ -105,7 +105,7 @@ export default function Projects({ projects, copy }) {
 
               <button
                 type="button"
-                className="portfolio-project-carousel__arrow portfolio-project-carousel__arrow--next"
+                className="portfolio-carousel-button portfolio-project-carousel__arrow portfolio-project-carousel__arrow--next"
                 onClick={() =>
                   setPageIndex((previous) => Math.min(previous + 1, totalPages - 1))
                 }
