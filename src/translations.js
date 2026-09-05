@@ -62,6 +62,7 @@ export const translations = {
       socialTitle: 'You can also find me on:',
       downloadPrompt: 'Download my résumé:',
       downloadButton: 'DOWNLOAD CV',
+      downloadMenuLabel: 'Choose résumé language',
       contactButton: 'CONTACT ME',
       portraitAlt: 'Portrait of Saifullah'
     },
@@ -274,6 +275,7 @@ export const translations = {
       socialTitle: 'Du kan også finde mig på:',
       downloadPrompt: 'Download mit CV:',
       downloadButton: 'DOWNLOAD CV',
+      downloadMenuLabel: 'Vælg sprog til CV',
       contactButton: 'KONTAKT MIG',
       portraitAlt: 'Portræt af Saifullah'
     },
@@ -486,6 +488,7 @@ export const translations = {
       socialTitle: 'Du findest mich auch auf:',
       downloadPrompt: 'Meinen Lebenslauf herunterladen:',
       downloadButton: 'LEBENSLAUF',
+      downloadMenuLabel: 'Sprache des Lebenslaufs auswählen',
       contactButton: 'KONTAKT',
       portraitAlt: 'Porträt von Saifullah'
     },

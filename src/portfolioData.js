@@ -35,8 +35,22 @@ export const portfolioData = {
     email: 'hello@iamsaifullah.com',
     avatar: '/assets/images/portfolio-my-image.png',
     logo: '/assets/images/logo-for-portfolio.png',
-    cvUrl: '/assets/Saifullah.pdf',
-    cvDownloadName: 'saifullah.pdf',
+    resumes: [
+      {
+        code: 'en',
+        label: 'English',
+        description: 'English résumé · PDF',
+        url: '/assets/Saifullah.pdf',
+        downloadName: 'Saifullah-Resume-EN.pdf'
+      },
+      {
+        code: 'de',
+        label: 'Deutsch',
+        description: 'Deutscher Lebenslauf · PDF',
+        url: '/assets/Saifullah-DE.pdf',
+        downloadName: 'Saifullah-Lebenslauf-DE.pdf'
+      }
+    ],
     contactEmail: 'hello@iamsaifullah.com',
     inlineSocialTitle: 'You can also find me at:'
   },

@@ -1,6 +1,34 @@
+import { useEffect, useRef, useState } from 'react';
 import SocialLinks from './SocialLinks';
 
 export default function About({ about, socialLinks, copy }) {
+  const [resumeMenuOpen, setResumeMenuOpen] = useState(false);
+  const resumeMenuRef = useRef(null);
+
+  useEffect(() => {
+    if (!resumeMenuOpen) return undefined;
+
+    const closeMenu = (event) => {
+      if (event.key === 'Escape') {
+        setResumeMenuOpen(false);
+        resumeMenuRef.current?.querySelector('button')?.focus();
+        return;
+      }
+
+      if (event.type === 'pointerdown' && !resumeMenuRef.current?.contains(event.target)) {
+        setResumeMenuOpen(false);
+      }
+    };
+
+    document.addEventListener('pointerdown', closeMenu);
+    document.addEventListener('keydown', closeMenu);
+
+    return () => {
+      document.removeEventListener('pointerdown', closeMenu);
+      document.removeEventListener('keydown', closeMenu);
+    };
+  }, [resumeMenuOpen]);
+
   return (
     <div id="home" className="rn-slide-area">
       <div className="slide slider-style-3">
@@ -51,9 +79,50 @@ export default function About({ about, socialLinks, copy }) {
                     <div className="user-info-bottom">
                       <span>{copy.downloadPrompt} </span>
                       <div className="button-wrapper d-flex">
-                        <a className="rn-btn mr--30" href={about.cvUrl} download={about.cvDownloadName}>
-                          <span>{copy.downloadButton}</span>
-                        </a>
+                        <div className="portfolio-resume-download mr--30" ref={resumeMenuRef}>
+                          <button
+                            className="rn-btn portfolio-resume-download__trigger"
+                            type="button"
+                            aria-label={copy.downloadMenuLabel}
+                            aria-expanded={resumeMenuOpen}
+                            aria-controls="resume-download-menu"
+                            onClick={() => setResumeMenuOpen((isOpen) => !isOpen)}
+                          >
+                            <i className="feather-download" aria-hidden="true" />
+                            <span>{copy.downloadButton}</span>
+                            <i className="feather-chevron-down portfolio-resume-download__chevron" aria-hidden="true" />
+                          </button>
+
+                          {resumeMenuOpen && (
+                            <div
+                              id="resume-download-menu"
+                              className="portfolio-resume-download__menu"
+                              role="menu"
+                              aria-label={copy.downloadMenuLabel}
+                            >
+                              <p>{copy.downloadMenuLabel}</p>
+                              {about.resumes.map((resume) => (
+                                <a
+                                  key={resume.code}
+                                  href={resume.url}
+                                  download={resume.downloadName}
+                                  hrefLang={resume.code}
+                                  role="menuitem"
+                                  onClick={() => setResumeMenuOpen(false)}
+                                >
+                                  <span className="portfolio-resume-download__code" aria-hidden="true">
+                                    {resume.code.toUpperCase()}
+                                  </span>
+                                  <span className="portfolio-resume-download__option-copy">
+                                    <strong>{resume.label}</strong>
+                                    <small>{resume.description}</small>
+                                  </span>
+                                  <i className="feather-download" aria-hidden="true" />
+                                </a>
+                              ))}
+                            </div>
+                          )}
+                        </div>
                         <a className="rn-btn" href={`mailto:${about.contactEmail}`}>
                           <span>{copy.contactButton}</span>
                         </a>
