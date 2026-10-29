@@ -55,6 +55,10 @@ export default function About({ about, socialLinks, copy }) {
                           <span>{copy.role}</span>
                         </div>
                         <div className="info">
+                          <i className="feather-map-pin" aria-hidden="true" />
+                          <span>{copy.workAuthorization}</span>
+                        </div>
+                        <div className="info">
                           <i className="feather-mail" aria-hidden="true" />
                           <a href={`mailto:${about.email}`}>{about.email}</a>
                         </div>

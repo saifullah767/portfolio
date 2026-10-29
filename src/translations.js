@@ -59,6 +59,7 @@ export const translations = {
       title:
         'Remote full-stack web developer building React, Vue, Tailwind, Laravel, and AI-powered web applications.',
       role: 'Full-Stack Web Developer | React, Vue, Tailwind, Laravel, AI Integrations',
+      workAuthorization: 'Based in Germany · Fully authorized to work in Germany — no sponsorship required',
       socialTitle: 'You can also find me on:',
       downloadPrompt: 'Download my résumé:',
       downloadButton: 'DOWNLOAD CV',
@@ -272,6 +273,7 @@ export const translations = {
       title:
         'Remote full-stack-webudvikler, der bygger webapplikationer med React, Vue, Tailwind, Laravel og AI.',
       role: 'Full-stack-webudvikler | React, Vue, Tailwind, Laravel, AI-integrationer',
+      workAuthorization: 'Bosat i Tyskland · Fuld arbejdstilladelse i Tyskland — intet visumsponsorat nødvendigt',
       socialTitle: 'Du kan også finde mig på:',
       downloadPrompt: 'Download mit CV:',
       downloadButton: 'DOWNLOAD CV',
@@ -485,6 +487,7 @@ export const translations = {
       title:
         'Remote-Full-Stack-Webentwickler für Webanwendungen mit React, Vue, Tailwind, Laravel und KI.',
       role: 'Full-Stack-Webentwickler | React, Vue, Tailwind, Laravel, KI-Integrationen',
+      workAuthorization: 'Wohnhaft in Deutschland · Uneingeschränkte Arbeitserlaubnis — kein Sponsoring erforderlich',
       socialTitle: 'Du findest mich auch auf:',
       downloadPrompt: 'Meinen Lebenslauf herunterladen:',
       downloadButton: 'LEBENSLAUF',
